@@ -1,5 +1,6 @@
-# intel-mi6
-_Like James Bond for your text based intelligence_
+intel-mi6
+==============
+*Like James Bond for your text based intelligence*
 
 intel-mi6 is a ruby script library for scraping pastebin (for now) and other intel sources.
 
