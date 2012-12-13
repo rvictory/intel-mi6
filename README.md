@@ -11,3 +11,18 @@ Workers (which can be on any machine) connect to the servers to get tasks and pr
 This project is the fourth iteration of my pastebin scraper, it started as two perl scripts, morphed into my inaugural ruby project, was then rewritten again, and here it is, now distributed and awesome.
 
 MongoDB will eventually provide the persistence.
+
+Instructions for Use
+===============
+
+To use, you will need to start up a lot of scripts. I will be daemonizing these scripts soon, until then start them in this order:
+
+task_server.rb
+tor_proxy.rb
+paste_id_collector.rb
+
+multiple instances of paste_content_worker.rb as you see fit
+
+multiple instances of classification_worker.rb as you see fit
+
+In all honesty, this doesn't do anything yet so running it is just an exercise to show it works.
