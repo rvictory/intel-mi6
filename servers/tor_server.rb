@@ -1,4 +1,4 @@
-# tor_proxy.rb : provides a dRb server to manage the running instances of tor
+# tor_server.rb : provides a dRb server to manage the running instances of tor
 # Author: Ryan Victory
 # Known Issues: Doesn't actually manage tor yet
 
