@@ -1,3 +1,7 @@
+# tor_proxy.rb : provides a dRb server to manage the running instances of tor
+# Author: Ryan Victory
+# Known Issues: Doesn't actually manage tor yet
+
 require 'drb/drb'
 require 'net/http'
 require 'socksify/http'

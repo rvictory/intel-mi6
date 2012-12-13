@@ -1,3 +1,8 @@
+# paste_content_worker.rb : connects to the dRb task server to grab paste collection tasks, gets their contents and
+#                           pushes the contents to the classify queue
+# Author: Ryan Victory
+# Known Issues: none
+
 require 'net/http'
 require 'socksify/http'
 require 'drb'

@@ -1,3 +1,7 @@
+# task_server.rb : provides a dRb server to create queues with tasks
+# Author: Ryan Victory
+# Known Issues: none
+
 require 'drb/drb'
 
 # The URI for the clients to connect to

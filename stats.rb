@@ -1,3 +1,7 @@
+# stats.rb : connects to the task server and grabs the current state of things (queues, number of messages, etc.)
+# Author: Ryan Victory
+# Known Issues: none
+
 require 'drb/drb'
 
 # The URI to connect to

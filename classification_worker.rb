@@ -1,3 +1,7 @@
+# classification_worker.rb : connects to the task server and grabs items that need to be classified
+# Author: Ryan Victory
+# Known Issues: doesn't do anything
+
 require 'drb'
 
 # The URI to connect to

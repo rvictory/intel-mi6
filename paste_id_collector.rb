@@ -1,3 +1,7 @@
+# paste_id_collector.rb : collects paste_ids from PasteBin and pushes them as new tasks to the task server
+# Author: Ryan Victory
+# Known Issues: TODO: Use the tor proxy server
+
 require 'date'
 require 'drb/drb'
 require 'net/http'
