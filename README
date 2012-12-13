@@ -1,3 +1,6 @@
+# intel-mi6
+_Like James Bond for your text based intelligence_
+
 intel-mi6 is a ruby script library for scraping pastebin (for now) and other intel sources.
 
 The system relies on distributed ruby to setup a task server (similar to Rabbit MQ), and a Tor Proxy server manager (this will eventually handle the tor proxies).
