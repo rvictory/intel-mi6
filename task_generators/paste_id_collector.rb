@@ -15,16 +15,21 @@ DRb.start_service
 
 task_server = DRbObject.new_with_uri(SERVER_URI)
 
+$tor_server = DRbObject.new_with_uri("druby://localhost:8888")
+
 paste_ids = []
 
 while true do
+  tor = $tor_server.get_proxy
+  ua = $tor_server.random_ua
   uri = URI.parse("http://pastebin.com/archive")
   begin
-    response = Net::HTTP.SOCKSProxy("127.0.0.1", 9050).start(uri.host, uri.port) do |http|
-      http.get(uri.path,  {'User-Agent' => 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)'})
+    response = Net::HTTP.SOCKSProxy(tor[:address], tor[:port]).start(uri.host, uri.port) do |http|
+      http.get(uri.path,  {'User-Agent' => ua})
     end
   rescue
     puts "Well, something went wrong, we are probably blocked #{$!}"
+    $tor_server.cycle_proxy(tor)
     Kernel.sleep 5
     next
   end

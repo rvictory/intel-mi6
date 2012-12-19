@@ -29,7 +29,7 @@ def process_task(task)
   rescue
     puts "Something went wrong, we might be blocked. Waiting for the other script to retry"
     # Tell the tor server to bounce the instance
-    $tor_server.cycle_proxy(tor[:port])
+    $tor_server.cycle_proxy(tor)
     # Return the task to the server
     $task_server.push_task "waiting_for_content", task
     return
@@ -41,8 +41,7 @@ def process_task(task)
   end
   if response.body =~ /Pastebin.com Unknown Paste ID/ || response.body =~ /Private Paste ID:/
     puts "Unknown Paste Deleting"
-    #We just don't do anything with it
-    return
+    return #We just don't do anything with it
   end
   pattern = /<textarea[^>]*>([^<]*)<\/textarea>/
   response.body.scan(pattern).each do |x|
