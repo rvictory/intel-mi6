@@ -28,7 +28,7 @@ while true do
     Kernel.sleep 5
     next
   end
-  pattern = /<a href="\/([a-zA-Z0-9]{8})">([a-zA-Z0-9]{8})<\/a>/
+  pattern = /<a href="\/([a-zA-Z0-9]{8})">([^>]+)<\/a>/
   response.body.scan(pattern).each do |x|
     unless paste_ids.include? x[0]
       task_server.push_task("waiting_for_content", {:paste_id => x[0], :title => x[1], :ts => DateTime.now.to_s})
