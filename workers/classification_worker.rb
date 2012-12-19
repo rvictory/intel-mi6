@@ -12,9 +12,19 @@ DRb.start_service
 
 $task_server = DRbObject.new_with_uri(SERVER_URI)
 
+def process_task(task)
+  # We are not going to classify right now, simply construct a new document and push to the persist queue
+  document = {
+      :database => 'intel',
+      :collection => 'intel_items',
+      :document => task
+  }
+  $task_server.push_task('persist', document)
+end
+
 while true do
   #Check to see if there's a task
   task = $task_server.get_task("classify")
   process_task(task) unless task.nil?
-  sleep 5 if task.nil?
+  sleep 2 if task.nil?
 end

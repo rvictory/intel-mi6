@@ -60,5 +60,5 @@ while true do
   #Check to see if there's a task
   task = $task_server.get_task("waiting_for_content")
   process_task(task) unless task.nil?
-  sleep 5 if task.nil?
+  sleep 2 if task.nil?
 end

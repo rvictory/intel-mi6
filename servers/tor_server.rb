@@ -128,7 +128,7 @@ end
 
 
 # The object that handles requests on the server
-FRONT_OBJECT = TorServer.new(3)
+FRONT_OBJECT = TorServer.new(20)
 
 $SAFE = 1   # disable eval() and friends
 

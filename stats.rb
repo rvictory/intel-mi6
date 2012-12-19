@@ -16,4 +16,8 @@ DRb.start_service
 
 task_server = DRbObject.new_with_uri(SERVER_URI)
 
-puts task_server.stats
+while true do
+  puts task_server.stats
+  puts "\n\n\n\n\n"
+  sleep 2
+end
