@@ -6,6 +6,29 @@
 require 'drb/drb'
 require 'socket'
 
+trap("EXIT") {
+  FRONT_OBJECT.tor_pids.each do |pid|
+    puts "Killing #{pid}"
+    Process.kill("INT", pid)
+  end
+  exit
+}
+
+at_exit do
+  FRONT_OBJECT.tor_pids.each do |pid|
+    puts "Killing #{pid}"
+    Process.kill("INT", pid)
+  end
+end
+
+# In order to handle being daemonized, we are going to immediately check for a argument and chdir to that if there is one
+
+puts ARGV.inspect
+
+if ARGV.length > 0
+  Dir.chdir(ARGV[0])
+end
+
 # The URI for the clients to connect to
 SERVER_URI="druby://0.0.0.0:8888"
 
@@ -63,6 +86,10 @@ class TorServer
         'Opera/9.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.01'
     ]
     uas.shuffle.first
+  end
+
+  def tor_pids
+    @proxies.map {|x| x[:pid]}
   end
 
   def initialize(num_proxies)
