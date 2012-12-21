@@ -1,6 +1,11 @@
 # classification_worker.rb : connects to the task server and grabs items that need to be classified
 # Author: Ryan Victory
-# Known Issues: doesn't do anything
+# Known Issues: none
+# TODO: read search rules from the database
+# TODO: reload search rules on signal (SIGUSR1)
+# TODO: bayesian classification or similar?
+# TODO: reload bayesian training data on signal (SIGUSR2)
+# TODO: create DSL for auto classification/deleting
 
 require 'drb'
 

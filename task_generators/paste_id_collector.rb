@@ -1,6 +1,7 @@
 # paste_id_collector.rb : collects paste_ids from PasteBin and pushes them as new tasks to the task server
 # Author: Ryan Victory
-# Known Issues: TODO: Use the tor proxy server
+# Known Issues: none
+# TODO: Convert to use the generic_scraper_worker instead of getting its own data
 
 require 'date'
 require 'drb/drb'

@@ -2,6 +2,9 @@
 # Author: Ryan Victory
 # Known Issues: none
 # TODO: configuration file for the mongo connection?
+#
+# Expected input document format:
+# {:database => 'The MongoDB database to use', :collection => 'The collection to use', :document => 'The document to write'}
 
 require 'mongo'
 require 'drb'
@@ -15,6 +18,7 @@ SERVER_URI="druby://localhost:8787"
 DRb.start_service
 
 $task_server = DRbObject.new_with_uri(SERVER_URI)
+# I'm using a replica set, change this if you only have one mongo instance (shame on you!)
 $mongo_connection = ReplSetConnection.new(['10.0.0.200:27017', 'mongoose2:27017', 'mongoose3:27017'], :read => :secondary)
 
 def process_task(task)

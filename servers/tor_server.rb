@@ -23,8 +23,6 @@ end
 
 # In order to handle being daemonized, we are going to immediately check for a argument and chdir to that if there is one
 
-puts ARGV.inspect
-
 if ARGV.length > 0
   Dir.chdir(ARGV[0])
 end

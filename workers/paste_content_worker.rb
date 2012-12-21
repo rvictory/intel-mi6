@@ -2,6 +2,7 @@
 #                           pushes the contents to the classify queue
 # Author: Ryan Victory
 # Known Issues: none
+# TODO: Convert to using the generic_scraper_worker instead of getting its own data
 
 require 'net/http'
 require 'socksify/http'

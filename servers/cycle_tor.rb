@@ -5,7 +5,10 @@
 
 require 'socket'
 
-puts "Error, wrong number of args" if ARGV.length < 2
+if ARGV.length < 2
+  puts "Error, wrong number of args"
+  exit(1)
+end
 
 control_port = ARGV[0]
 password = ARGV[1]

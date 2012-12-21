@@ -4,7 +4,11 @@
 # TODO: Task acknowledgement?
 # TODO: Write tasks to disk in case of failure?
 # TODO: Clustered task servers?
-# Note: WHY AM I REPLICATING RABBIT-MQ? Because I can.
+# Note: WHY AM I REPLICATING RABBIT-MQ? Because I can. Rabbit may be the direction I go in the future, but for now I'm
+#       trying to see what I can accomplish with dRb, in theory it's more portable this way.
+#       A future idea is to allow certain workers to be run on Android devices that can run ruby (using
+#       Ruboto), and by having the task server be in pure ruby I avoid any issues with loading the Rabbit or AMQP gem
+#       onto the device.
 
 require 'drb/drb'
 
@@ -36,6 +40,8 @@ class TaskServer
     return nil if @queues[queue].empty?
     task = @queues[queue].pop
     puts "Sending task: " + task.inspect
+    # If the queue is now empty, remove it to save space in the future
+    @queues.delete(queue) if @queues[queue].empty?
     task
   end
 
