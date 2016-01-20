@@ -24,7 +24,7 @@ def process_task(task)
       :collection => 'intel_items',
       :document => task
   }
-  $task_server.push_task('persist', document)
+  $task_server.push_task('persist', task)
 end
 
 while true do
